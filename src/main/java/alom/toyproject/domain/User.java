@@ -1,9 +1,22 @@
 package alom.toyproject.domain;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(nullable = false, unique = true)
+    @Email
+    @NotNull
     private String email;
+    @Column(nullable = false)
     private String nickname;
+    @Column(nullable = false)
     private String password;
 
     public String getEmail() {
@@ -28,5 +41,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

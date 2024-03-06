@@ -8,7 +8,7 @@ spring:
     # ?? ??
     url: jdbc:mysql://localhost:3306/toyproject
     username: root
-    password: ??~
+    password: Wkqqlqjs!77
   # JPA ??
   jpa:
     generate-ddl: true
