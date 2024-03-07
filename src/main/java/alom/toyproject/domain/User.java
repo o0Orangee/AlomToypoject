@@ -3,19 +3,24 @@ package alom.toyproject.domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Entity
+@Data
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false, unique = true)
     @Email
     @NotNull
     private String email;
+
     @Column(nullable = false)
     private String nickname;
+
     @Column(nullable = false)
     private String password;
 

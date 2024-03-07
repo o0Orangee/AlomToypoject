@@ -1,4 +1,4 @@
-package alom.toyproject.Dto;
+package alom.toyproject.dto;
 
 import lombok.Data;
 
