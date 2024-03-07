@@ -1,5 +1,6 @@
 package alom.toyproject.controller;
 
+import alom.toyproject.domain.User;
 import alom.toyproject.dto.UserInfoDto;
 import alom.toyproject.dto.UserLoginDto;
 import alom.toyproject.dto.UserRegistrationDto;
@@ -24,13 +25,15 @@ public class UserController {
     }
 
     @PostMapping("/registration")    //뭐라써야되지
-    public ResponseEntity<UserInfoDto> registerUser(@RequestBody UserRegistrationDto userRegistrationDto) {
-        return new ResponseEntity<>(userService.registerNewUser(userRegistrationDto), HttpStatus.OK);
+    public ResponseEntity<User> registerUser(@RequestBody UserRegistrationDto userRegistrationDto) {
+        User user = userService.registerNewUser(userRegistrationDto);
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/login")
     public ResponseEntity<UserInfoDto> loginUser(@RequestBody UserLoginDto userLoginDto) {
-        return new ResponseEntity<>(userService.loginUser(userLoginDto), HttpStatus.OK);
+        UserInfoDto userInfoDto = userService.loginUser(userLoginDto);
+        return ResponseEntity.ok(userInfoDto);
     }
 
 }

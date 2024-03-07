@@ -29,7 +29,7 @@ public class UserService {
     /*회원가입: 이메일, 닉네임, 패스워드 받아 신규 사용자 등록
     * 패스워드는 저장 시에 암호화
     * 중복 이메일 ㄴㄴ*/
-    public UserInfoDto registerNewUser(UserRegistrationDto userRegistrationDto) {
+    public User registerNewUser(UserRegistrationDto userRegistrationDto) {
         if(userRepository.findByEmail(userRegistrationDto.getEmail()).isPresent()){
             throw new IllegalStateException("이미 등록된 이메일입니다");
         }
@@ -42,11 +42,11 @@ public class UserService {
         userRepository.save(newUser);
 
 //        저장된 유저 정보 리턴(이메일, 닉네임)
-        UserInfoDto savedUser = new UserInfoDto();
+        /*UserInfoDto savedUser = new UserInfoDto();
         savedUser.setEmail(newUser.getEmail());
-        savedUser.setNickname(newUser.getNickname());
+        savedUser.setNickname(newUser.getNickname());*/
 
-        return savedUser;
+        return newUser;
     }
 
     /*로그인: 이메일, 패스워드로 로그인
